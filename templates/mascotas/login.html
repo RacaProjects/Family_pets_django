@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Family Pets</title>
+  <!-- Vinculamos el CSS -->
+  <link rel="stylesheet" href="{% static 'mascotas/CSS/Style_login.css' %}">
+</head>
+
+<script>
+  // Cuando cambia el selector de tipo
+  document.addEventListener('DOMContentLoaded', function() {
+    const tipoSelect = document.getElementById('tipo');
+    const fundacionExtra = document.getElementById('fundacionExtra');
+    
+    function toggleFundacionField() {
+      if (tipoSelect.value === 'fundacion') {
+        fundacionExtra.style.display = 'block';
+      } else {
+        fundacionExtra.style.display = 'none';
+      }
+    }
+    // Cambia al cargar y cada vez que cambia el selector
+    tipoSelect.addEventListener('change', toggleFundacionField);
+    toggleFundacionField();
+  });
+</script>
+
+<body>
+  <div class="login-container">
+    <h2>Family Pets - Login</h2>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="tipo">Ingresar como:</label>
+        <select id="tipo" name="tipo">
+          <option value="usuario">Usuario</option>
+          <option value="fundacion">Fundación</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="username">Usuario:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <!-- Extra para fundación, si lo usas -->
+      <div class="form-group" id="fundacionExtra" style="display:none;">
+        <label for="codigo">Código de Fundación:</label>
+        <input type="text" id="codigo" name="codigo" placeholder="Ingrese su código de registro">
+      </div>
+      <button type="submit" class="btn">Ingresar</button>
+      <button onclick="history.back(); return false;" type="button" class="btn">Regresar</button>
+      <div class="extra-links">
+        <p>¿No tienes cuenta? <a href="{% url 'mascotas:registro' %}">Regístrate aquí</a></p>
+      </div>
+    </form>
+
+  </div>
+
+
+</body>
+</html>

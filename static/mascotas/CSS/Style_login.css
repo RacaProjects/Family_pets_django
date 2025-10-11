@@ -1,0 +1,88 @@
+/* ==== ESTILOS GENERALES ==== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /* Fondo con degradado en tonos naranjas */
+  background: linear-gradient(135deg, #ff914d, #ff6a3d);
+  display: flex;                /* Centramos horizontalmente */
+  justify-content: center;      /* Centramos verticalmente */
+  align-items: center;
+  height: 100vh;                /* Ocupa toda la altura de la pantalla */
+}
+
+/* ==== CONTENEDOR DEL LOGIN ==== */
+.login-container {
+  background: #fff;              /* Fondo blanco */
+  padding: 2rem;
+  border-radius: 15px;           /* Bordes redondeados */
+  box-shadow: 0px 4px 15px rgba(0,0,0,0.2); /* Sombra ligera */
+  width: 350px;
+  text-align: center;
+}
+
+/* ==== TÍTULO ==== */
+.login-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* ==== CAMPOS DEL FORMULARIO ==== */
+.form-group {
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+/* ==== LETRAS ==== */
+.form-group label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+/* ==== CUADRO IMPUT O PARA ESCRIBIR ==== */
+.form-group input, 
+.form-group select {
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ==== BOTÓN ==== */
+.btn {
+  background: #ff6a3d;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 10px; /* 🔹 Espaciado entre botones */
+}
+
+.btn:last-of-type {
+  margin-bottom: 0; /* 🔹 El último botón no necesita margen extra */
+}
+
+.btn:hover {
+  background: #ff914d; /* Color más claro al pasar el mouse */
+}
+
+/* ==== ENLACES EXTRAS ==== */
+.extra-links {
+  margin-top: 1rem;
+  font-size: 14px;
+}
+
+.extra-links a {
+  color: #ff6a3d;
+  text-decoration: none;
+}
+
+.extra-links a:hover {
+  text-decoration: underline;
+}

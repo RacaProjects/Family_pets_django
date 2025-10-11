@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Mascota</title>
+    <style>
+      .confirm-box {
+        background: #fff8f4;
+        padding: 24px 30px;
+        border: 2px solid #ff463a;
+        border-radius: 9px;
+        margin: 80px auto;
+        max-width: 440px;
+        text-align: center;
+        color: #222;
+        font-family: sans-serif;
+      }
+      .confirm-box button { margin: 6px 12px; }
+    </style>
+</head>
+<body>
+    <div class="confirm-box">
+        <h2>¿Eliminar mascota "{{ mascota.nombre_mascota }}"?</h2>
+        <p>Esta acción <b>no se puede deshacer</b>.</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" style="background:#ff463a; color:white; border:none; padding: 7px 16px; border-radius: 5px;">Sí, eliminar</button>
+            <a href="{% url 'mascotas:ver_mascotas' %}" style="margin-left:8px;">Cancelar</a>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+body {
+  background: #f7f7f7;
+}
+.form-wrap {
+  max-width: 380px;
+  margin: 45px auto 32px auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 22px #0001;
+  padding: 32px 26px 20px 26px;
+}
+.form-wrap h1 {
+  color: #ff914d;
+  margin-bottom: 22px;
+  font-size: 2em;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 17px;
+  text-align: left;
+}
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 4px;
+  color: #333;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+  padding: 7px 9px;
+  font-size: 1em;
+  margin: 0;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.16s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border: 1.5px solid #8bbcff;
+}
+.form-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 23px;
+}
+.btn-guardar {
+  background: #51ff91;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  padding: 9px 0 10px 0;
+  font-weight: bold;
+  font-size: 1.11em;
+  cursor: pointer;
+  flex: 1 1 50%;
+  box-shadow: 0 1.5px 9px #51ff9132;
+  transition: background 0.16s, color 0.13s;
+}
+.btn-guardar:hover {
+  background: #31e466;
+  color: #111;
+}
+.btn-cancelar {
+  background: #fff1e6;
+  border: 1.5px solid #ff914d;
+  color: #ff914d;
+  border-radius: 6px;
+  padding: 9px 0 10px 0;
+  font-weight: bold;
+  font-size: 1.11em;
+  cursor: pointer;
+  flex: 1 1 50%;
+  box-shadow: 0 .5px 6px #ffd8bd28;
+  transition: background 0.12s, color 0.13s;
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+}
+.btn-cancelar:hover {
+  background: #ffeadd;
+  color: #ce5b00;
+  border-color: #ff914d;
+  text-decoration: underline;
+}
+input[type="file"] {
+  background: #f2f4fb;
+  border-radius: 6px;
+  border: 1.2px dashed #aac8ee;
+  padding: 5px 4px;
+}
+
+/* Helpers para mensajes */
+.form-help {
+  font-size: 0.97em;
+  color: #888;
+  margin-top: 2px;
+}
+.form-error {
+  color: #e14;
+  font-size: 0.98em;
+}

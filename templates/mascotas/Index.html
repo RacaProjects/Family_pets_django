@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Pets | Inicio</title>
+  <link rel="stylesheet" href="{% static 'mascotas/CSS/Style.css' %}">
+</head>
+<body>
+  <header>
+    <h1>Family Pets</h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'mascotas:index' %}">Inicio</a></li>
+        <li><a href="{% url 'mascotas:ver_mascotas' %}">Ver Mascotas</a></li>
+        {% if user.is_authenticated %}
+          <li>
+            <form method="post" action="{% url 'logout' %}" class="logout-form" style="margin:0;padding:0;">
+              {% csrf_token %}
+              <button type="submit" class="logout-link">Cerrar sesión</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login / Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+  </header>
+
+  <div class="bienvenida">
+    {% if user.is_authenticated %}
+      <h2>¡Bienvenido, {{ user.first_name|default:user.username }}!</h2>
+      <p>
+        {% if es_admin %}
+          Panel administrador activo.
+        {% elif es_fundacion %}
+          Fundación registrada. ¿Quieres publicar nuevas mascotas?
+        {% else %}
+          Nos alegra tenerte aquí. ¡Explora y encuentra tu compañero ideal!
+        {% endif %}
+      </p>
+    {% else %}
+      <h2>¡Bienvenido a Family Pets!</h2>
+      <p>La plataforma donde puedes adoptar, ayudar o compartir el amor animal. <br>
+         <a href="{% url 'mascotas:registro' %}" style="color:#ff6a3d;">Regístrate gratis</a>
+      </p>
+    {% endif %}
+    <span style="font-size:1.06em; color:#ff914d;">Encuentra a tu compañero ideal aquí.</span>
+  </div>
+
+  <div style="margin:26px auto; max-width:560px; background:#f7f7f7; border-radius:11px; padding:15px 23px; text-align:center;">
+    <h3 style="margin-bottom:10px;">¿Cómo funciona Family Pets?</h3>
+    <p>Regístrate de forma segura, navega por las mascotas, y solicita información para adoptar o ayudar. Si eres fundación, publica historias y mascotas aquí fácilmente.</p>
+  </div>
+
+  <div class="mascotas">
+    {% for mascota in mascotas_destacadas %}
+      <div class="mascota">
+        {% if mascota.foto_mascota %}
+          <img class="foto_mascota" src="{{ mascota.foto_mascota.url }}" alt="{{ mascota.nombre_mascota }}">
+        {% else %}
+          <img class="foto_mascota" src="{% static 'mascotas/imagenes/no-image.jpg' %}" alt="Sin imagen">
+        {% endif %}
+        <h3>{{ mascota.emoji }} {{ mascota.nombre_mascota }}</h3>
+        <p>Edad: {{ mascota.edad_mascota }}</p>
+        <p>Tamaño: {{ mascota.tamano_mascota }}</p>
+        <p>Fundación: {{ mascota.fundacion }}</p>
+        <img src="{{ mascota.foto.url }}" alt="{{ mascota.nombre_mascota }}" class="foto_mascota">
+        <br>
+        {% if mascota.id %}
+
+        {% else %}
+          <span style="color:crimson;">Mascota sin id</span>
+        {% endif %}
+      </div>
+    {% empty %}
+      <p>Aún no hay mascotas destacadas. ¡Súbela tú mismo!</p>
+    {% endfor %}
+  </div>
+
+  <footer>
+    Contacto | Redes Sociales | © 2025 Family Pets
+  </footer>
+</body>
+</html>

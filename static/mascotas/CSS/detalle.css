@@ -1,0 +1,77 @@
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: none;
+  font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+.naranja-background {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(120deg, #ff9240 0%, #ff7420 100%);
+  width: 100vw;
+  height: 100vh;
+}
+
+.detalle-card {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border-radius: 20px;
+  max-width: 420px;
+  margin: 60px auto 0 auto;
+  box-shadow: 0 4px 28px 0 rgba(0,0,0,0.13);
+  padding: 36px 34px 38px 34px;
+  text-align: center;
+}
+
+.detalle-card h2 {
+  font-size: 2.35em;
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 14px;
+  letter-spacing: 1px;
+  color: #31333a;
+}
+
+.detalle-foto {
+  width: 220px;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 13px;
+  margin: 14px auto 18px auto;
+  box-shadow: 0 3px 10px 0 rgba(255, 116, 32, 0.1);
+  display: block;
+}
+
+.detalle-info p {
+  margin: 9px 0;
+  font-size: 1.09em;
+  color: #111;
+  font-weight: bold;
+}
+
+.detalle-info p b {
+  color: #333;
+}
+
+.detalle-volver {
+  display: inline-block;
+  margin-top: 26px;
+  background: #44c161;
+  color: #fff;
+  font-size: 1.03em;
+  font-weight: 700;
+  border: none;
+  border-radius: 22px;
+  padding: 10px 42px;
+  text-decoration: none;
+  box-shadow: 0 2px 8px 0 rgba(68,193,97,0.18);
+  transition: background 0.2s;
+}
+
+.detalle-volver:hover {
+  background: #289342;
+}

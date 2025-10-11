@@ -1,0 +1,108 @@
+    /* Fondo con degradado naranja igual al login */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff914d, #ff6a3d);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Ocupar toda la altura */
+    }
+    /* Contenedor principal del registro */
+    .login-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.18);
+      width: 350px;
+      text-align: center;
+      margin: 0 auto;
+    }
+    .login-container h2 {
+      margin-bottom: 1rem;
+      color: #ff6a3d;
+      font-weight: bold;
+      font-size: 1.25em;
+    }
+    /* Agrupa y etiqueta cada campo */
+    .form-group {
+      margin-bottom: 1rem;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      color: #444;
+    }
+    /* Inputs y select compactos */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    /* El bloque fundación como tarjeta interna */
+    #fundacionExtra {
+      background: #f2f7ff;
+      border: 1.8px solid #9eccfa;
+      border-radius: 11px;
+      padding: 10px 12px 6px 11px;
+      margin-bottom: 10px;
+      margin-top: 7px;
+      box-shadow: 0 1px 7px #aad2fa59;
+      animation: fadeFund .23s;
+      font-size: 13.5px;
+    }
+    /* Animación de entrada */
+    @keyframes fadeFund {
+      0% {opacity:0; transform: translateY(-10px);}
+      100% {opacity:1; transform: none;}
+    }
+    /* Responsive para móvil: apilado */
+    @media (max-width: 410px) {
+      .login-container { width: 92vw;}
+      .form-group input, .form-group select { width: 99%;}
+    }
+    /* Error visual igual login */
+    .error-message {
+      background: #ffe1db;
+      color: #e54a15;
+      border-radius: 7px;
+      padding: 8px 6px;
+      text-align: center;
+      margin-bottom: 13px;
+      font-size: 14px;
+      border-left: 3px solid #ff6a3d;
+    }
+    /* Botones igual que login */
+    .btn {
+      background: #ff6a3d;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 10px;
+      width: 100%;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-bottom: 10px;
+    }
+    .btn:hover { background: #ff914d; }
+    /* Último botón sin margen */
+    .btn:last-of-type { margin-bottom: 0; }
+    .extra-links {
+      margin-top: 1rem;
+      font-size: 14px;
+    }
+    .extra-links a {
+      color: #ff6a3d;
+      text-decoration: none;
+    }
+    .extra-links a:hover {
+      text-decoration: underline;
+    }

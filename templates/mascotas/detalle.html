@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Detalle mascota: {{ mascota.nombre_mascota }}</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'mascotas/css/detalle.css' %}">
+</head>
+<body>
+  <div class="naranja-background"></div>
+  <div class="detalle-card">
+    <h2>{{ mascota.nombre_mascota }}</h2>
+    {% if mascota.foto_mascota %}
+      <img class="detalle-foto" src="{{ mascota.foto_mascota.url }}" alt="Foto de {{ mascota.nombre_mascota }}" />
+    {% else %}
+      <img class="detalle-foto" src="{% static 'mascotas/imagenes/no-image.svg' %}" alt="Sin foto" />
+    {% endif %}
+    <div class="detalle-info">
+      <p><b>Raza:</b> {{ mascota.raza_mascota }}</p>
+      <p><b>Edad:</b> {{ mascota.edad_mascota }}</p>
+      <p><b>Tamaño:</b> {{ mascota.tamano_mascota|default:"-" }}</p>
+      <p><b>Fundación:</b> {{ mascota.fundacion|default:"-" }}</p>
+      <p><b>Detalles:</b> {{ mascota.detalles_adicionales|default:"Sin detalles" }}</p>
+    </div>
+    <a href="{% url 'mascotas:ver_mascotas' %}" class="detalle-volver">&#8592; Volver</a>
+  </div>
+</body>
+</html>

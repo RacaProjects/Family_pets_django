@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar Mascota</title>
+  <link rel="stylesheet" href="{% static 'mascotas/CSS/Style_ver_mascotas.css' %}">
+  <link rel="stylesheet" href="{% static 'mascotas/CSS/Style_formulario.css' %}">
+</head>
+<body>
+  <header>
+    <h1 style="color: #fff; margin-bottom: 0;">Agregar Mascota</h1>
+  </header>
+
+  <section class="form-wrap">
+    <form method="post" enctype="multipart/form-data" autocomplete="off">
+      {% csrf_token %}
+      {% for field in form.visible_fields %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}
+            <div class="form-help">{{ field.help_text }}</div>
+          {% endif %}
+          {% for error in field.errors %}
+            <div class="form-error">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <div class="form-buttons">
+        <button type="submit" class="btn-guardar">Guardar</button>
+        <a href="{% url 'mascotas:ver_mascotas' %}" class="btn-cancelar">Cancelar</a>
+      </div>
+    </form>
+  </section>
+</body>
+</html>

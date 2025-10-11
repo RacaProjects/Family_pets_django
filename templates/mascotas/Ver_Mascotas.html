@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Family Pets - Ver Mascotas</title>
+  <link rel="stylesheet" href="{% static 'mascotas/CSS/Style_ver_mascotas.css' %}">
+</head>
+<body>
+  <!-- ========== MENÚ SUPERIOR ========== -->
+  <header>
+    <h1>Family Pets</h1>
+    <p>Encuentra tu compañero ideal</p>
+    {% if user.is_authenticated %}
+      <div>
+        Bienvenido, <strong>{{ user.username }}</strong>
+        (
+        {% if es_admin %}
+          Administrador
+        {% elif es_fundacion %}
+          Fundación
+        {% else %}
+          Usuario normal
+        {% endif %}
+        )
+      </div>
+    {% endif %}
+    <nav>
+      <ul>
+        <li><a href="{% url 'mascotas:index' %}">Inicio</a></li>
+        <li><a href="{% url 'mascotas:ver_mascotas' %}">Ver Mascotas</a></li>
+        {% if user.is_authenticated %}
+          <li>
+            <form method="post" action="{% url 'logout' %}" class="logout-form" style="display:inline;">
+              {% csrf_token %}
+              <button type="submit" class="logout-link">Cerrar sesión</button>
+            </form>
+          </li>
+        {% else %}
+          <li><a href="{% url 'login' %}">Login / Register</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+  
+  <div class="contenedor">
+    
+    <!-- izquierda -->
+    <aside class="left">
+      <div class="filtro-icono">🔎</div>
+      <div class="filtro-title">Filtra tu búsqueda</div>
+      <p class="filtro-desc">Usa los filtros para buscar perros, gatos, edad o fundación, ¡y encuentra a tu mascot@ ideal más rápido!</p>
+    </aside>
+
+    <!-- CENTRO -->
+    <main>
+      <section class="filter-section">
+        <form method="get" class="form-filtros">
+          {% for field in filter.form.visible_fields %}
+            <div class="filter-item">
+              <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+              {{ field }}
+            </div>
+          {% endfor %}
+          <button type="submit" class="btn-filtrar">Filtrar</button>
+        </form>
+      </section>
+      <h2>🐾 Mascotas en adopción 🐾</h2>
+      <div class="mascota-lista">
+        {% for mascota in mascotas %}
+          <div class="mascota-card">
+            {% if mascota.foto_mascota %}
+              <img class="foto_mascota" src="{{ mascota.foto_mascota.url }}" alt="{{ mascota.nombre_mascota }}">
+            {% else %}
+              <img class="foto_mascota" src="{% static 'mascotas/imagenes/no-image.svg' %}" alt="Sin imagen">
+            {% endif %}
+            <h3>{{ mascota.emoji }} {{ mascota.nombre_mascota }}</h3>
+            <p><strong>Edad:</strong> {{ mascota.edad_mascota }}</p>
+            <p><strong>Tamaño:</strong> {{ mascota.tamano_mascota }}</p>
+            <p><strong>Fundación:</strong> {{ mascota.fundacion }}</p>
+            <a href="{% url 'mascotas:detalle' mascota.id %}"><button class="ver-mas">Ver más</button></a>
+            {% if user.is_authenticated and es_admin or user.is_authenticated and es_fundacion %}
+              <a href="{% url 'mascotas:editar' mascota.id %}"><button class="boton-editar">Editar</button></a>
+              <a href="{% url 'mascotas:eliminar' mascota.id %}"><button class="boton-eliminar">Eliminar</button></a>
+            {% endif %}
+          </div>
+        {% empty %}
+          <div style="width:100%; text-align:center;">No hay mascotas registradas 🐾</div>
+        {% endfor %}
+      </div>
+      {% if user.is_authenticated and es_admin or user.is_authenticated and es_fundacion %}
+        <a href="{% url 'mascotas:nuevo' %}" class="btn-agregar">Agregar mascota</a>
+      {% endif %}
+    </main>
+
+
+
+    <!-- DERECHA -->
+
+
+  </div>
+  
+  <footer>
+    <p>© 2025 Family Pets | Contacto | Redes sociales</p>
+  </footer>
+</body>
+</html>

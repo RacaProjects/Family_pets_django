@@ -1,3 +1,4 @@
 Django>=3.2,<5.0
 pillow
 django-filter
+mysqlclient

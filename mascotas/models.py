@@ -15,4 +15,4 @@ class Mascota(models.Model):
         return self.nombre_mascota
     
 class Meta:
-    db_table = 'Mascotas' # Colocamos el nombre de la tabla
+    db_table = 'Mascotas' 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'mascotas',
     'django_filters', # para filtros mas dinamicos
+    'rest_framework'
 ]
 
 MIDDLEWARE = [

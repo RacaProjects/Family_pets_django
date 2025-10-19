@@ -4,6 +4,10 @@ from .models import Mascota
 from .forms import MascotaForm
 from .filters import MascotaFilter
 from django.contrib.auth.models import User, Group
+from rest_framework import viewsets
+from .models import Mascota
+from .MascotaSerializer import MascotaSerializer
+from django.shortcuts import render, get_object_or_404
 # Create your views here.
 
 def lista_mascotas(request):
@@ -94,8 +98,13 @@ def registro(request):
             return redirect('login')
     return render(request, 'mascotas/registro.html', {'error': error})
 
-from django.shortcuts import render, get_object_or_404
+
 
 def detalle_mascota(request, pk):
     mascota = get_object_or_404(Mascota, pk=pk)
     return render(request, 'mascotas/detalle.html', {'mascota': mascota})
+
+
+class MascotaViewSet(viewsets.ModelViewSet):
+    queryset = Mascota.objects.all()
+    serializer_class = MascotaSerializer

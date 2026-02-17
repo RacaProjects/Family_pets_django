@@ -1,0 +1,27 @@
+{% load static %}
+{# templates/partials/chatbot.html #}
+<div id="chatbot">
+  <!-- BURBUJA FLOTANTE -->
+  <button class="chat-bubble" id="chatToggle" aria-label="Abrir chat con el bot">💬</button>
+
+  <!-- CONTENEDOR PRINCIPAL DEL CHAT -->
+  <div class="chat-container" id="chatContainer" role="dialog" aria-modal="true" aria-labelledby="chatTitle">
+    <!-- CABECERA -->
+    <div class="chat-header">
+      <span id="chatTitle">Chatbot Family Pets</span>
+      <button class="close-btn" id="closeChat" aria-label="Cerrar chat">✖</button>
+    </div>
+
+    <!-- ÁREA DE MENSAJES -->
+    <div class="messages" id="messages" role="log" aria-live="polite"></div>
+
+    <!-- ÁREA DE INPUT -->
+    <div class="input-area">
+      <input type="text" id="userInput" aria-label="Escribe tu mensaje" placeholder="Escribe tu pregunta..." />
+      <button id="sendBtn">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<link rel="stylesheet" href="{% static 'mascotas/CSS/style_chatbot.css' %}">
+<script src="{% static 'mascotas/JS/chatbot.js' %}"></script>

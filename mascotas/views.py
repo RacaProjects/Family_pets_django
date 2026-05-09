@@ -69,7 +69,7 @@ def ver_mascotas(request):
     }
     return render(request, 'mascotas/Ver_Mascotas.html', context)
 
-CODIGO_FUNDACION = "FAMI2025"  # se puede cambiar si es necesario
+CODIGO_FUNDACION = "FAMI2026"  # se puede cambiar si es necesario
 
 def registro(request):
     error = ""
@@ -92,7 +92,7 @@ def registro(request):
         else:
             user = User.objects.create_user(username=username, password=password, email=email, first_name=nombre)
             if tipo == "fundacion" and codigo == CODIGO_FUNDACION:
-                grupo = Group.objects.get(name="Fundacion")
+                grupo, created = Group.objects.get_or_create(name="Fundacion")
                 user.groups.add(grupo)
             user.save()
             return redirect('login')
@@ -108,3 +108,5 @@ def detalle_mascota(request, pk):
 class MascotaViewSet(viewsets.ModelViewSet):
     queryset = Mascota.objects.all()
     serializer_class = MascotaSerializer
+
+
